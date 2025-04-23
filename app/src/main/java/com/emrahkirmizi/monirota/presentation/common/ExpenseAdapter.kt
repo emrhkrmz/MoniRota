@@ -1,4 +1,4 @@
-package com.emrahkirmizi.monirota.ui.common
+package com.emrahkirmizi.monirota.presentation.common
 
 //(class - RecyclerView.Adapter)
 class ExpenseAdapter {
