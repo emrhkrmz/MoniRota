@@ -1,9 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)        // ✅ Hilt plugin buraya eklendi
+    kotlin("kapt")                  // ✅ kapt da eklendi
 }
 
 android {
+
+    viewBinding {
+        enable = true
+    }
+
     namespace = "com.emrahkirmizi.monirota"
     compileSdk = 35
 
@@ -37,6 +44,9 @@ android {
 
 dependencies {
 
+    implementation(libs.hilt.core)   // ✅ Hilt core
+    kapt(libs.hilt.compiler)         // ✅ Hilt annotation processor
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -45,4 +55,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+kapt {
+    correctErrorTypes = true
 }
