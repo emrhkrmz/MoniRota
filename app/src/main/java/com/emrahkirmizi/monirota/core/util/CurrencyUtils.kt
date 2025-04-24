@@ -1,4 +1,4 @@
-package com.emrahkirmizi.monirota.utils
+package com.emrahkirmizi.monirota.core.util
 
 //Yardımcı Sınıf : Object
 object CurrencyUtils {

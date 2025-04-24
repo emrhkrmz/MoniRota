@@ -1,11 +1,13 @@
-package com.emrahkirmizi.monirota
+package com.emrahkirmizi.monirota.presentation.main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.emrahkirmizi.monirota.R
 
+//class (Activity)
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
