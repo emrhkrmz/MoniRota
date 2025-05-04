@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/addExpenseFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.emrahkirmizi.monirota.presentation.dashboard.DashboardFragment"
+        android:label="Harcama Listesi"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.emrahkirmizi.monirota.presentation.addexpense.AddExpenseFragment"
+        android:label="Tutar Ekle"
+        tools:layout="@layout/fragment_add_expense" />
+
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.emrahkirmizi.monirota.presentation.category.AddCategoryFragment"
+        android:label="Kategori"
+        tools:layout="@layout/fragment_category_list" />
+</navigation>

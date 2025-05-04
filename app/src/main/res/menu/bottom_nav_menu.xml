@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Harcama Listesi" />
+
+    <item
+        android:id="@+id/addExpenseFragment"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Tutar Ekle" />
+
+    <item
+        android:id="@+id/addCategoryFragment"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="Kategori" />
+
+</menu>
