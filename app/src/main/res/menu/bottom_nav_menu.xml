@@ -12,7 +12,7 @@
         android:title="Tutar Ekle" />
 
     <item
-        android:id="@+id/addCategoryFragment"
+            android:id="@+id/categoryListFragment"
         android:icon="@android:drawable/ic_menu_manage"
         android:title="Kategori" />
 
