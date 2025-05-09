@@ -4,4 +4,55 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:spacing="8dp">
+
+            <!-- Kategori Adı -->
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Kategori Adı"
+                android:inputType="text" />
+
+            <!-- Renk Seç -->
+            <Spinner
+                android:id="@+id/spinnerColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- İkon Seç -->
+            <Spinner
+                android:id="@+id/spinnerIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Lokasyon -->
+            <EditText
+                android:id="@+id/editTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lokasyon (isteğe bağlı)"
+                android:inputType="text" />
+
+            <!-- Kaydet Butonu -->
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kaydet"
+                android:layout_marginTop="24dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
