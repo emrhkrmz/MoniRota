@@ -11,6 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.emrahkirmizi.monirota.R
 import com.emrahkirmizi.monirota.databinding.FragmentCategoryListBinding
 import com.emrahkirmizi.monirota.presentation.common.adapter.CategoryAdapter
@@ -37,6 +39,23 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
 
         binding.recyclerViewCategories.adapter = adapter
 
+        //Swipe to Delete
+        val itemTouchHelper = ItemTouchHelper(object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val category = adapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteCategoryById(category.id)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.recyclerViewCategories)
+
+        //Listeyi gözlemle
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.categories.collect { list ->
@@ -59,6 +78,7 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
                 findNavController().navigate(R.id.action_categoryListFragment_to_addCategoryFragment)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

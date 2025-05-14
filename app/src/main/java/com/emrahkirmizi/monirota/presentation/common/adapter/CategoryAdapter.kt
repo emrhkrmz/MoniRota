@@ -3,6 +3,7 @@ package com.emrahkirmizi.monirota.presentation.common.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -26,11 +27,21 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.CategoryViewHolder
             }
 
             binding.textViewIcon.text = "Icon: ${category.iconName}"
+
+            //Lokasyon bilgisi eklenmiş ise göster
+            if (category.location != null) {
+                binding.textViewLocation.text = "Lokasyon: ${category.location}"
+                binding.textViewLocation.visibility = View.VISIBLE
+            } else {
+                binding.textViewLocation.visibility = View.GONE
+            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoryViewHolder(binding)
     }
 
@@ -39,7 +50,9 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.CategoryViewHolder
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Category>() {
-        override fun areItemsTheSame(oldItem: Category, newItem: Category) = oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: Category, newItem: Category) =
+            oldItem.id == newItem.id
+
         override fun areContentsTheSame(oldItem: Category, newItem: Category) = oldItem == newItem
     }
 }
