@@ -15,42 +15,37 @@ import javax.inject.Inject
 //ViewModel
 
 @HiltViewModel
-//Hilt, repository’yi buraya enjekte eder : @inject consturctor
 class CategoryViewModel @Inject constructor(
     private val repository: CategoryRepository
 ) : ViewModel() {
 
-    //Tüm kategorileri canlı olarak alır
+    // 🔹 1. App ilk açıldığında, eğer veritabanı boşsa ön tanımlı kategoriler eklensin
+    init {
+        viewModelScope.launch {
+            repository.insertDefaultCategoriesIfEmpty()
+        }
+    }
+
+    // 🔹 2. Tüm kategorileri canlı olarak alır
     val categories = repository.getAllCategories()
         .map { it.sortedByDescending { cat -> cat.id } }
-        //Flow’u UI’da canlı ve cache’li tutar : stateIn
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
 
-    //Yeni kategori ekler
+    // 🔹 3. Yeni kategori ekler
     fun addCategory(category: Category) {
-
         viewModelScope.launch {
-
             repository.insertCategory(category)
-
         }
-
     }
 
-    //ID' ye göre kategori siler
+    // 🔹 4. ID'ye göre kategori siler
     fun deleteCategoryById(id: Int) {
-
-        //Coroutine ile arka planda çalışır : viewModelScope.launch
         viewModelScope.launch {
-
             repository.deleteCategoryById(id)
-
         }
-
     }
-
 }

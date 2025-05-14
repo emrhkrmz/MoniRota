@@ -22,4 +22,12 @@ interface CategoryDao {
     //Belirli bir kategoriyi silme
     @Query("DELETE FROM categories WHERE id = :categoryId")
     suspend fun deleteCategoryById(categoryId: Int)
+
+    //Tüm kategorileri tek seferlik getirir
+    @Query("SELECT * FROM categories")
+    suspend fun getAllOnce(): List<Category>
+
+    //Çoklu kategori ekleme
+    @Insert
+    suspend fun insertCategories(categories: List<Category>)
 }

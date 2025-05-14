@@ -22,6 +22,8 @@ interface CategoryRepository {
 
     suspend fun deleteCategoryById(id: Int)
 
+    suspend fun insertDefaultCategoriesIfEmpty()
+
     /*
     suspend → Coroutine içinde çalışması gerektiğini belirtir (arka planda, UI’ı kilitlemeden)
     Flow<List<Category>> → Otomatik güncellenen liste akışı sağlar

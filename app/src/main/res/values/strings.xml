@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoniRota</string>
+    <string name="add_category">Kategori Ekle</string>
+    <string name="title_add_category">Kategori Ekle</string>
 </resources>

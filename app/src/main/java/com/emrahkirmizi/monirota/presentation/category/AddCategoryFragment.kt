@@ -19,52 +19,43 @@ import kotlinx.coroutines.flow.stateIn
 @AndroidEntryPoint
 class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
 
-    // ViewModel'e erişim (Hilt tarafından sağlanır)
     private val viewModel: CategoryViewModel by viewModels()
-
-    // ViewBinding kullanımı
     private var _binding: FragmentAddCategoryBinding? = null
     private val binding get() = _binding!!
 
-    // View oluşturulduğunda çağrılır
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAddCategoryBinding.bind(view)
 
-        setupSpinners()        // Renk ve ikon spinner'larını bağla
-        setupSaveButton()      // Kaydet butonunu çalıştır
+        setupSpinners()
+        setupSaveButton()
     }
 
-    // Hafızayı temizle
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    /**
-     * Spinner'lara liste bağlama işlemleri
-     */
     private fun setupSpinners() {
         val colorAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
             ColorUtils.categoryColorMap.keys.toList()
-        )
-        colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
         binding.spinnerColor.adapter = colorAdapter
 
         val iconAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
             IconUtils.categoryIconList
-        )
-        iconAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
         binding.spinnerIcon.adapter = iconAdapter
     }
 
-    /**
-     * Kaydet butonuna tıklanınca kategori nesnesi oluşturup veritabanına ekler
-     */
     private fun setupSaveButton() {
         binding.buttonSave.setOnClickListener {
             val name = binding.editTextName.text.toString()

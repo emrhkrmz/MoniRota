@@ -4,21 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/addExpenseFragment">
 
+    <!-- 1. Harcama Listesi -->
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.emrahkirmizi.monirota.presentation.dashboard.DashboardFragment"
         android:label="Harcama Listesi"
         tools:layout="@layout/fragment_dashboard" />
 
+    <!-- 2. Tutar Ekle -->
     <fragment
         android:id="@+id/addExpenseFragment"
         android:name="com.emrahkirmizi.monirota.presentation.addexpense.AddExpenseFragment"
         android:label="Tutar Ekle"
         tools:layout="@layout/fragment_add_expense" />
 
+    <!-- 3. Kategori Listesi -->
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.emrahkirmizi.monirota.presentation.category.AddCategoryFragment"
+        android:name="com.emrahkirmizi.monirota.presentation.category.CategoryListFragment"
         android:label="Kategori"
-        tools:layout="@layout/fragment_category_list" />
+        tools:layout="@layout/fragment_category_list">
+
+        <!-- ➕ Kategori Ekle Geçişi -->
+        <action
+            android:id="@+id/action_categoryListFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+    </fragment>
+
+    <!-- 4. Kategori Ekle -->
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.emrahkirmizi.monirota.presentation.category.AddCategoryFragment"
+        android:label="Kategori Ekle"
+        tools:layout="@layout/fragment_add_category" />
+
 </navigation>

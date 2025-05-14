@@ -1,3 +1,6 @@
+package com.emrahkirmizi.monirota.presentation.common.adapter
+
+
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,10 +14,18 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.CategoryViewHolder
 
     inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(category: Category) {
             binding.textViewName.text = category.name
-            binding.textViewColor.setBackgroundColor(Color.parseColor(category.colorHex))
-            binding.textViewIcon.text = category.iconName // Geçici: ikon ismi yazıyor
+
+            // Renk hex kodu parse edilirken çökmesin diye
+            try {
+                binding.textViewColor.setBackgroundColor(Color.parseColor(category.colorHex))
+            } catch (e: IllegalArgumentException) {
+                binding.textViewColor.setBackgroundColor(Color.GRAY)
+            }
+
+            binding.textViewIcon.text = "Icon: ${category.iconName}"
         }
     }
 

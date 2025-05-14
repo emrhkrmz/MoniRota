@@ -1,6 +1,5 @@
 package com.emrahkirmizi.monirota.presentation.category
 
-import CategoryAdapter
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -10,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.emrahkirmizi.monirota.R
 import com.emrahkirmizi.monirota.databinding.FragmentCategoryListBinding
+import com.emrahkirmizi.monirota.presentation.common.adapter.CategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -26,16 +26,20 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCategoryListBinding.bind(view)
 
+        // RecyclerView bağla
         binding.recyclerViewCategories.adapter = adapter
 
-        lifecycleScope.launch {
+        // Listeyi gözlemle
+        viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.categories.collect { list ->
                     adapter.submitList(list)
-                    binding.textViewEmpty.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+                    binding.textViewEmpty.visibility =
+                        if (list.isEmpty()) View.VISIBLE else View.GONE
                 }
             }
         }
+
     }
 
     override fun onDestroyView() {

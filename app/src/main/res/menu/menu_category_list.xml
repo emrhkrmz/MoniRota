@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/action_add_category"
-        android:title="Kategori Ekle"
         android:icon="@android:drawable/ic_input_add"
-        android:showAsAction="ifRoom" />
+        android:title="@string/title_add_category"
+        app:showAsAction="ifRoom"/>
 </menu>
