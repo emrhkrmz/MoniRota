@@ -37,7 +37,11 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
         }
 
         binding.rvCategories.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
             adapter = categoryAdapter
         }
     }

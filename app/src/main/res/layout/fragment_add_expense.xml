@@ -34,19 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Açıklama -->
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#7E2626"
-        android:hint="Açıklama (opsiyonel)"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAmount" />
-
     <!-- Kaydet Butonu -->
     <Button
         android:id="@+id/btnSave"
@@ -56,7 +43,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#312323"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/etDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvAmount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
