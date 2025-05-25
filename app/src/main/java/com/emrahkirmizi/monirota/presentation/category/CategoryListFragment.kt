@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -30,17 +31,39 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
 
     private val adapter = CategoryAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
+   // override fun onCreate(savedInstanceState: Bundle?) {
+     //   super.onCreate(savedInstanceState)
+    //    //setHasOptionsMenu(true)
+   // }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         _binding = FragmentCategoryListBinding.bind(view)
 
         binding.recyclerViewCategories.adapter = adapter
+
+
+
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_category_list, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_add_category -> {
+                        findNavController().navigate(R.id.action_categoryListFragment_to_addCategoryFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+
+
 
         //Swipe to Delete
         val itemTouchHelper = ItemTouchHelper(object :
@@ -70,22 +93,22 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_category_list, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+    //override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    //    inflater.inflate(R.menu.menu_category_list, menu)
+    //    super.onCreateOptionsMenu(menu, inflater)
+    //}
 
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_add_category -> {
-                // Gidilecek yön
-                findNavController().navigate(R.id.action_categoryListFragment_to_addCategoryFragment)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+   // override fun onOptionsItemSelected(item: MenuItem): Boolean {
+       // return when (item.itemId) {
+           // R.id.action_add_category -> {
+           //     // Gidilecek yön
+          //      findNavController().navigate(R.id.action_categoryListFragment_to_addCategoryFragment)
+        //        true
+       //     }
+      //      else -> super.onOptionsItemSelected(item)
+     //   }
+    //}
 
 
     override fun onDestroyView() {

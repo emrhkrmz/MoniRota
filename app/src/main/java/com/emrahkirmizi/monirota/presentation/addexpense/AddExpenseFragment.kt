@@ -10,7 +10,6 @@ import com.emrahkirmizi.monirota.R
 import com.emrahkirmizi.monirota.databinding.FragmentAddExpenseBinding
 import com.emrahkirmizi.monirota.domain.model.Category
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
