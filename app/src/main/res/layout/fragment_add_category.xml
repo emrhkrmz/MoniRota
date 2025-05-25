@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -22,19 +22,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Kategori Adı"
-                android:inputType="text" />
+                android:inputType="text"
+                android:minHeight="48dp" />
 
             <!-- Renk Seç -->
             <Spinner
                 android:id="@+id/spinnerColor"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
 
             <!-- İkon Seç -->
             <Spinner
                 android:id="@+id/spinnerIcon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
 
             <!-- Lokasyon -->
             <EditText
@@ -42,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Lokasyon (isteğe bağlı)"
-                android:inputType="text" />
+                android:inputType="text"
+                android:minHeight="48dp" />
 
             <!-- Kaydet Butonu -->
             <Button
