@@ -5,5 +5,5 @@
         android:id="@+id/action_add_category"
         android:icon="@android:drawable/ic_input_add"
         android:title="Kategori Ekle"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 </menu>
