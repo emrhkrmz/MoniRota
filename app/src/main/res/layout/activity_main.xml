@@ -10,14 +10,15 @@
 
     <!-- ✅ Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
-        app:menu="@menu/top_app_bar_menu"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         app:titleTextColor="@android:color/white"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- ✅ NavHost -->
     <androidx.fragment.app.FragmentContainerView

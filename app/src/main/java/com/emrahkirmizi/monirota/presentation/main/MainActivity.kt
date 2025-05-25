@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
 
+        setSupportActionBar(binding.toolbar)
+
         // ViewBinding ile layout'u bağla
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,21 +48,4 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
     }
 
-    // Toolbar'daki menü öğelerini bağla
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_app_bar_menu, menu)
-        return true
-    }
-
-    // Menüdeki öğelere tıklama işlemi
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_add -> {
-                Toast.makeText(this, "Kategori Ekle tıklandı", Toast.LENGTH_SHORT).show()
-                // TODO: Burada kategori ekleme sayfasına geçiş yapılabilir
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

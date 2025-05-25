@@ -22,6 +22,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
 
+
+
     private val viewModel: CategoryViewModel by viewModels()
     private var _binding: FragmentCategoryListBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +34,7 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,19 +75,24 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_add_category -> {
+                // Gidilecek yön
                 findNavController().navigate(R.id.action_categoryListFragment_to_addCategoryFragment)
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
 }
