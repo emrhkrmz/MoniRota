@@ -38,4 +38,5 @@
         android:label="Kategori Ekle"
         tools:layout="@layout/fragment_add_category" />
 
+
 </navigation>
