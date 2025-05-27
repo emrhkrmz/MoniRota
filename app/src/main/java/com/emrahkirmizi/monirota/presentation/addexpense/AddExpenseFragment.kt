@@ -1,5 +1,6 @@
 package com.emrahkirmizi.monirota.presentation.addexpense
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -12,6 +13,8 @@ import com.emrahkirmizi.monirota.databinding.FragmentAddExpenseBinding
 import com.emrahkirmizi.monirota.domain.model.Category
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import android.view.MotionEvent
+import androidx.core.widget.doOnTextChanged
 
 @AndroidEntryPoint
 class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
@@ -35,7 +38,8 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
 
         setupCategoryRecyclerView()   // Kategori listesini başlat
         observeCategories()           // ViewModel'den gelen kategori verisini dinle
-        setupListeners()              // 🟢 Şimdi aktif! Hazır tuş gizleme burada
+        setupListeners()              //  Şimdi aktif! Hazır tuş gizleme burada
+        listenKeyboardVisibility()         // klavye takibi aktif ediliyor
     }
 
     // Kategori RecyclerView setup
@@ -65,33 +69,67 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
         }
     }
 
-    // 🟢 HAZIR TUŞLARI GİZLEME ÖZELLİĞİ BURADA AKTİF
+    // HAZIR TUŞLARI GİZLEME ÖZELLİĞİ BURADA AKTİF
+
     private fun setupListeners() {
-        // Kullanıcı manuel tutar girişi alanına tıklayınca, hazır tuşlar gizlensin
-        binding.etManualAmount.setOnFocusChangeListener { _, hasFocus ->
-            binding.gridKeypad.isVisible = !hasFocus
+        binding.etManualAmount.doOnTextChanged { text, _, _, _ ->
+            val input = text.toString().trim()
+            binding.tvAmount.text = if (input.isEmpty()) "0 TL" else "$input TL"
+        }
+
+        // Şimdilik hazır tuşlar burada değil,
+        // sadece buton tıklamaları vs. ileride buraya eklenecek
+    }
+
+
+    private fun listenKeyboardVisibility() {
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener {
+            if (_binding == null) return@addOnGlobalLayoutListener
+
+            val rect = Rect()
+            binding.root.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = binding.root.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            val isKeyboardVisible = keypadHeight > screenHeight * 0.15
+
+            // 👇 Klavye AÇIKSA gizle
+            if (isKeyboardVisible) {
+                binding.gridKeypad.isVisible = false
+            } else {
+                // 👇 Klavye kapalıysa göster
+                binding.gridKeypad.isVisible = true
+            }
         }
     }
 
-    /*
-     * 🟡 İLERİDE EKLENECEKLER:
-     *
-     * 1. private fun saveExpense()
-     *    - Seçilen kategori ve tutarı kontrol et
-     *    - ViewModel aracılığıyla veritabanına kaydet
-     *
-     * 2. private fun clearInputs()
-     *    - Kayıt sonrası alanları temizle
-     *    - Kategori seçimini sıfırla
-     *
-     * 3. ViewModel > fun addExpense(amount: Double, categoryId: Int)
-     *    - Room DB kullanılarak harcama verisi eklenir
-     *
-     * 4. Navigation → Kaydettikten sonra başka ekrana yönlendirme (örn: ana liste ekranı)
-     */
+
+
 
     override fun onDestroyView() {
+        binding.etManualAmount.setOnFocusChangeListener(null)
         super.onDestroyView()
         _binding = null
     }
 }
+
+
+
+
+
+/*
+   * 🟡 İLERİDE EKLENECEKLER:
+   *
+   * 1. private fun saveExpense()
+   *    - Seçilen kategori ve tutarı kontrol et
+   *    - ViewModel aracılığıyla veritabanına kaydet
+   *
+   * 2. private fun clearInputs()
+   *    - Kayıt sonrası alanları temizle
+   *    - Kategori seçimini sıfırla
+   *
+   * 3. ViewModel > fun addExpense(amount: Double, categoryId: Int)
+   *    - Room DB kullanılarak harcama verisi eklenir
+   *
+   * 4. Navigation → Kaydettikten sonra başka ekrana yönlendirme (örn: ana liste ekranı)
+   */

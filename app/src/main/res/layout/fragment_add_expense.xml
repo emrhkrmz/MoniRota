@@ -27,7 +27,7 @@
         android:id="@+id/tvAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
         android:text="0 TL"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -40,19 +40,22 @@
         android:id="@+id/etManualAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:background="@android:color/transparent"
         android:gravity="center"
-        android:hint="Tutarı Kendiniz Giriniz"
+        android:hint="Tutar gir"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
+        android:singleLine="true"
+        android:textColor="#C8DBC8"
+        android:textCursorDrawable="@null"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
+
 
 
     <!-- Rakam Butonları GridLayout -->
