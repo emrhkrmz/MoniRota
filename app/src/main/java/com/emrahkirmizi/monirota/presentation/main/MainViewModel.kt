@@ -1,5 +1,10 @@
 package com.emrahkirmizi.monirota.presentation.main
 
-//class (ViewModel)
+/**
+ * Tüm uygulamayı yöneten MainActivity’nin ViewModel’i olarak görev yapacak.
+ * Login/Logout.
+ * Bağlantı durumu.
+ */
+
 class MainViewModel {
 }

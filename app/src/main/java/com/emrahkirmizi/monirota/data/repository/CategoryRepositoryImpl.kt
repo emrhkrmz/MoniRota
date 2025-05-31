@@ -15,22 +15,22 @@ class CategoryRepositoryImpl @Inject constructor(
     private val dao: CategoryDao
 ) : CategoryRepository {
 
-    // Yeni kategori ekler
+    //Yeni kategori ekler.
     override suspend fun insertCategory(category: Category) {
         dao.insertCategory(category)
     }
 
-    // Tüm kategorileri canlı olarak getirir
+    //Tüm kategorileri canlı olarak getirir.
     override fun getAllCategories(): Flow<List<Category>> {
         return dao.getAllCategories()
     }
 
-    // ID'ye göre kategori siler
+    //ID'ye göre kategori siler.
     override suspend fun deleteCategoryById(id: Int) {
         dao.deleteCategoryById(id)
     }
 
-    // 💡 Eğer veritabanı boşsa, ön tanımlı kategorileri ekler
+    //Eğer veritabanı boşsa, ön tanımlı kategorileri ekler.
     override suspend fun insertDefaultCategoriesIfEmpty() {
         val existing = dao.getAllOnce()
         if (existing.isEmpty()) {

@@ -1,6 +1,7 @@
 package com.emrahkirmizi.monirota.core.util
 
 object ColorUtils {
+    //Renkler.
     val categoryColorMap = mapOf(
         "Kırmızı" to "#F44336",
         "Sarı" to "#FFEB3B",

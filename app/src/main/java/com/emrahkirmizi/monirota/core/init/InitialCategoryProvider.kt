@@ -3,6 +3,7 @@ package com.emrahkirmizi.monirota.core.init
 import com.emrahkirmizi.monirota.domain.model.Category
 
 object InitialCategoryProvider {
+    //Uygulama ilk çalıştığında kullanılacak sabit veriler.
     fun getDefaultCategories(): List<Category> {
         return listOf(
             Category(name = "Gıda", colorHex = "#F44336", iconName = "ic_food"),

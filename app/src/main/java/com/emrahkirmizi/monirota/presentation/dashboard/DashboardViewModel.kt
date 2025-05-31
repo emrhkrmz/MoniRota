@@ -1,5 +1,6 @@
 package com.emrahkirmizi.monirota.presentation.dashboard
 
-//SEKME 2 – Özet / Pano
+//Dashboard ekranın ihtiyaç duyduğu veriler burada olacak.
+
 class DashboardViewModel {
 }

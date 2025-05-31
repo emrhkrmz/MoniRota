@@ -1,5 +1,7 @@
 package com.emrahkirmizi.monirota.presentation.addexpense
-
+/*
+Fragment bu ViewModel’i dinleyerek kategori listesini gösterir.
+ */
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.emrahkirmizi.monirota.domain.model.Category

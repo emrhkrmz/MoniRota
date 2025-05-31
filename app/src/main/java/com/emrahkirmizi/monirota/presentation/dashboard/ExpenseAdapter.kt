@@ -1,6 +1,6 @@
 package com.emrahkirmizi.monirota.presentation.dashboard
 
-//SEKME 2 – Özet / Pano
-//(class - RecyclerView.Adapter)
+//Dashboard'da yer alan harca listesini göstermek için kullanılacak.
+
 class ExpenseAdapter {
 }

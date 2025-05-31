@@ -1,5 +1,9 @@
 package com.emrahkirmizi.monirota.presentation.addexpense
 
+/**
+ * Bu adapter, AddExpenseFragment’ta kategori listesini yatay gösterir.
+ * Ve tıklanınca seçilen kategoriyi belirler, UI’yi günceller..
+ */
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup

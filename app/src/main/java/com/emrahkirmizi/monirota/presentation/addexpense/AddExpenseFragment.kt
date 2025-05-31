@@ -1,5 +1,11 @@
 package com.emrahkirmizi.monirota.presentation.addexpense
 
+/**
+ * presentation : Kullanıcıdan veri alır. ViewModel'e iletir.
+ * presentation: Uygulamanın kullanıcıya görünen kısımları burada yönetilir..
+ * ViewModel'den gelen verileri ekrana yansıtır.
+ */
+
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
@@ -13,13 +19,13 @@ import com.emrahkirmizi.monirota.databinding.FragmentAddExpenseBinding
 import com.emrahkirmizi.monirota.domain.model.Category
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import android.view.MotionEvent
 import androidx.core.widget.doOnTextChanged
 
-@AndroidEntryPoint
+@AndroidEntryPoint //Hilt ile bağımlılık : ViewModel enjekte edilebilir.
 class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
+    //Fragment(R.layout.fragment_add_expense : Bu fragment'ın layout dosyası bu XML'dir.)
 
-    // ViewBinding referansı
+    // ViewBinding
     private var _binding: FragmentAddExpenseBinding? = null
     private val binding get() = _binding!!
 
@@ -36,13 +42,13 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAddExpenseBinding.bind(view)
 
-        setupCategoryRecyclerView()   // Kategori listesini başlat
-        observeCategories()           // ViewModel'den gelen kategori verisini dinle
-        setupListeners()              //  Şimdi aktif! Hazır tuş gizleme burada
-        listenKeyboardVisibility()         // klavye takibi aktif ediliyor
+        setupCategoryRecyclerView() //Kategori listesini başlat.
+        observeCategories() //ViewModel'den gelen kategori verisini dinle.
+        setupListeners() //Şimdi aktif. Hazır tuş gizleme burada.
+        listenKeyboardVisibility() //Klavye takibi aktif ediliyor.
     }
 
-    // Kategori RecyclerView setup
+    // Kategori RecyclerView
     private fun setupCategoryRecyclerView() {
         categoryAdapter = CategorySelectAdapter(emptyList()) { selected ->
             selectedCategory = selected
@@ -69,19 +75,16 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
         }
     }
 
-    // HAZIR TUŞLARI GİZLEME ÖZELLİĞİ BURADA AKTİF
-
     private fun setupListeners() {
         binding.etManualAmount.doOnTextChanged { text, _, _, _ ->
             val input = text.toString().trim()
             binding.tvAmount.text = if (input.isEmpty()) "0 TL" else "$input TL"
         }
-
         // Şimdilik hazır tuşlar burada değil,
         // sadece buton tıklamaları vs. ileride buraya eklenecek
     }
 
-
+    //Klavye açılınc Numpad izleme.
     private fun listenKeyboardVisibility() {
         binding.root.viewTreeObserver.addOnGlobalLayoutListener {
             if (_binding == null) return@addOnGlobalLayoutListener
@@ -104,32 +107,28 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
     }
 
 
-
-
     override fun onDestroyView() {
         binding.etManualAmount.setOnFocusChangeListener(null)
         super.onDestroyView()
-        _binding = null
+        _binding = null //Memory Leak'ı önler
+
+        /**
+         * Memory Like : Bir nesne işi bittikten sonra hata bellekte tutuluyorsa.
+         */
+
     }
 }
 
 
-
-
-
-/*
-   * 🟡 İLERİDE EKLENECEKLER:
-   *
-   * 1. private fun saveExpense()
-   *    - Seçilen kategori ve tutarı kontrol et
-   *    - ViewModel aracılığıyla veritabanına kaydet
-   *
-   * 2. private fun clearInputs()
-   *    - Kayıt sonrası alanları temizle
-   *    - Kategori seçimini sıfırla
-   *
-   * 3. ViewModel > fun addExpense(amount: Double, categoryId: Int)
-   *    - Room DB kullanılarak harcama verisi eklenir
-   *
-   * 4. Navigation → Kaydettikten sonra başka ekrana yönlendirme (örn: ana liste ekranı)
-   */
+/**
+ * İLERİDE EKLENECEKLER:
+ * 1. private fun saveExpense()
+ *    Seçilen kategori ve tutarı kontrol et.
+ *    ViewModel aracılığıyla veritabanına kaydet.
+ * 2. private fun clearInputs()
+ *    Kayıt sonrası alanları temizle.
+ *    Kategori seçimini sıfırla.
+ * 3. ViewModel : fun addExpense(amount: Double, categoryId: Int)
+ *    Room DB kullanılarak harcama verisi eklenir..
+ * 4. Navigation : Kaydettikten sonra başka ekrana yönlendirme (örn: ana liste ekranı)
+ */

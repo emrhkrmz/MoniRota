@@ -1,5 +1,9 @@
 package com.emrahkirmizi.monirota.di
 
-//object (Hilt Module)
+/**
+ * Hilt Module.
+ * Uygulamanın internete açılan kapısı.
+ * Hilt ile tüm projeye enjekte edilebilir.
+ */
 object NetworkModule {
 }
