@@ -7,11 +7,11 @@
     android:padding="16dp">
 
     <!-- Kategori kartları -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:clipToPadding="false"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
@@ -21,8 +21,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <!-- Tutar -->
+
     <TextView
         android:id="@+id/tvAmount"
         android:layout_width="wrap_content"
@@ -56,22 +56,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
 
-
-
     <!-- Rakam Butonları GridLayout -->
 
-
     <GridLayout
-        android:gravity="center"
         android:id="@+id/gridKeypad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="151dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="182dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:alignmentMode="alignBounds"
         android:columnCount="3"
+        android:gravity="center"
         android:useDefaultMargins="true"
         app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,125 +73,125 @@
 
         <Button
 
+            android:id="@+id/btn200"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
+
+
             android:gravity="center"
-
-
-            android:id="@+id/btn200"
             android:text="200" />
 
         <Button
+            android:id="@+id/btn100"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn100"
+            android:gravity="center"
             android:text="100" />
 
         <Button
+            android:id="@+id/btn50"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn50"
+            android:gravity="center"
             android:text="50" />
 
         <Button
+            android:id="@+id/btn20"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn20"
+            android:gravity="center"
             android:text="20" />
 
         <Button
+            android:id="@+id/btn10"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn10"
+            android:gravity="center"
             android:text="10" />
 
         <Button
+            android:id="@+id/btn5"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn5"
+            android:gravity="center"
             android:text="5" />
 
         <Button
+            android:id="@+id/btn2"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn2"
+            android:gravity="center"
             android:text="2" />
 
         <Button
+            android:id="@+id/btn1"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn1"
+            android:gravity="center"
             android:text="1" />
 
 
         <Button
+            android:id="@+id/btn0_25"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_25"
+            android:gravity="center"
             android:text="0.25" />
 
         <Button
+            android:id="@+id/btn0_2"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_2"
+            android:gravity="center"
             android:text="0.2" />
 
         <Button
+            android:id="@+id/btn0_1"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_1"
+            android:gravity="center"
             android:text="0.1" />
 
         <Button
+            android:id="@+id/btn0_05"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_05"
+            android:gravity="center"
             android:text="0.05" />
 
         <Button
+            android:id="@+id/btn0_02"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_02"
+            android:gravity="center"
             android:text="0.02" />
 
         <Button
+            android:id="@+id/btn0_01"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btn0_01"
+            android:gravity="center"
             android:text="0.01" />
 
         <Button
+            android:id="@+id/btnDelete"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
 
-            android:id="@+id/btnDelete"
+            android:gravity="center"
             android:text="ENTER" />
     </GridLayout>
 
